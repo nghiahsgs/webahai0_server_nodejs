@@ -1,0 +1,26 @@
+extends ../layouts/main
+block content
+	a.btn.btn-primary(href=href='/user/create/') create
+	table.table
+		thead
+			th fullname
+			th username
+			th pass
+			th isAdmin
+			th edit
+			th delete
+		tbody
+			each user in users
+				tr
+					td= user.fullname
+					td= user.username
+					td= user.pass
+					td= user.isAdmin
+					
+					td
+						a.btn.btn-primary(href='/user/edit/'+user._id) edit
+					td
+						a.btn.btn-danger(href=href='/user/delete/'+user._id) delete
+			else
+				p There are no user
+					

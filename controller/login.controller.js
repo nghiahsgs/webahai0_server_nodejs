@@ -7,19 +7,30 @@ userModel=require("../model/user.model");
 
 
 router.get("/",function(req,res){
-	res.send("form login")
+	// res.send("form login")
+	res.render("login");
 })
 
 router.post("/",async function(req,res){
 	try{
 		var user=await userModel.findOne({
-		username:req.body.username,
-		pass:req.body.password
+			username:req.body.username,
+			password:req.body.password
 		});	
-		res.cookie("userId",user._id)
-		res.redirect("/dashboard")
+		
 	}catch(err){
+		console.log(err.message);
 		res.redirect("/login")
+	}
+	console.log(user);
+	
+	if(user){
+		//res.cookie("userId",user._id)
+		//res.redirect("/dashboard")	
+		console.log("login success");
+	}else{
+		console.log("login fail");
+		//res.redirect("/login")
 	}
 	
 

@@ -1,0 +1,14 @@
+extends ./layouts/main
+block content
+	#app
+		form(action='/user/login', method='post')
+		label username
+		input(type='text', name='username', v-model='username')
+		label password
+		input(type='password', name='password', v-model='password')
+		button(v-on:click='login') Login
+
+	
+	script(src='https://unpkg.com/vue')
+	script(src='https://unpkg.com/axios/dist/axios.min.js')
+	script(src='./login.js')

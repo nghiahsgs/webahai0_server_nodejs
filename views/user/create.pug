@@ -1,0 +1,23 @@
+extends ../layouts/main
+block content
+	form(method="post",action="/user/create")
+		input(type="hidden",name="_id",value=user?user._id:"")
+		.form-group
+			label(for='fullname') fullname
+			input#fullname.form-control(type='text',placeholder='Enter fullname',name='fullname',value=user?user.fullname:'')
+		.form-group
+			label(for='username') username
+			input#username.form-control(type='text',placeholder='Enter username',name='username',value=user?user.username:'')
+		.form-group
+			label(for='pass') pass
+			input#pass.form-control(type='text',placeholder='Enter pass',name='pass',value=user?user.pass:'')
+
+		.form-group
+			label(for='isAdmin') isAdmin
+			select.form-control(id='isAdmin', name='isAdmin')
+				
+				option(value='False') False
+				option(value='True') True
+
+			
+		button.btn.btn-primary(type='submit') Submit

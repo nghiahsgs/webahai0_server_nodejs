@@ -1,12 +1,19 @@
 var express=require("express");
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
+require('pug')
 
 var app=express();
 
-
 // connect db
 require("./db.js");
+
+//set views
+app.set('view engine', 'pug')
+app.use(express.static('public'))
+app.engine('pug', require('pug').__express)
+
+
 
 //load middleware
 app.use(bodyParser.urlencoded({ extended: false }))
