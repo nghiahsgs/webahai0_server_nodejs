@@ -19,12 +19,12 @@ app.engine('pug', require('pug').__express)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())
-var authMiddleware=require("./middleware/auth.middleware")
+// var authMiddleware=require("./middleware/auth.middleware")
 
 //import controller
 var userController=require("./controller/user.controller");
-var loginController=require("./controller/login.controller");
-var dashboardController=require("./controller/dashboard.controller");
+// var loginController=require("./controller/login.controller");
+// var dashboardController=require("./controller/dashboard.controller");
 var customerController=require("./controller/customer.controller");
 
 var orderController=require("./controller/order.controller");
@@ -36,15 +36,15 @@ var status_transferController=require("./controller/status_transfer.controller")
 
 //routers
 // app.use("/user",authMiddleware.requireAuth,authMiddleware.requireAuthAdmin,userController);
-app.use("/user",userController);
+app.use("/api/users",userController);
 // app.use("/post",postController);
-app.use("/login",loginController);
-app.use("/dashboard",loginController);
-app.use("/customer",customerController);
-app.use("/product",productController);
-app.use("/status",statusController);
-app.use("/status_transfer",status_transferController);
-app.use("/order",orderController);
+// app.use("/login",loginController);
+// app.use("/dashboard",loginController);
+app.use("/api/customers",customerController);
+app.use("/api/products",productController);
+app.use("/api/statuss",statusController);
+app.use("/api/status_transfers",status_transferController);
+app.use("/api/orders",orderController);
 
 
 var port=3000;
