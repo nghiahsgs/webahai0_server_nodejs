@@ -51,7 +51,11 @@ var orderSchema=new Schema({
 			},
 			quantity:Number
 		}
-	]
+	],
+	create_at:{
+		type:Date,
+		default:Date.now
+	},
 
 })
 

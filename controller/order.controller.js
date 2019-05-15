@@ -41,8 +41,8 @@ router.post("/",async function(req,res){
 	//input
 	/*
 		{
-		"status":"5ccfae740b33d221f7f35c96",
-		"status_transfer":"5ccfae600b33d221f7f35c95",
+		"status":"5cdb85ae2a402e623d9fd0a4",
+		"status_transfer":"5cdb85ce2a402e623d9fd0a6",
 		"address":"thanh xuan  nguyen trai ha noi",
 		"address_in_hanoi":true,
 		"phone":"0232333",
@@ -52,11 +52,11 @@ router.post("/",async function(req,res){
 		"user":"5cda1daa39dc4b4cbb831474",
 		"order_details"	:[
 			{
-				"product":"5ccfae953152e724a5934636",
+				"product":"5cdb85e72a402e623d9fd0a9",
 				"quantity":4
 			},
 			{
-				"product":"5ccfae953152e724a5934636",
+				"product":"5cdb85ed2a402e623d9fd0aa",
 				"quantity":14
 			}
 		]
