@@ -7,9 +7,11 @@ status_transferModel=require("../model/status_transfer.model");
 
 
 router.get("/",async function(req,res){
-	var status_transfers=await status_transferModel.find();
-	//console.log(status_transfers);
-	res.send(status_transfers);
+	try{
+		var users=await status_transferModel.find(req.query)
+		//console.log(users);
+		res.send(users)
+	}catch(err){}
 	
 })
 

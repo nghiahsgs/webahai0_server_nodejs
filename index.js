@@ -16,9 +16,19 @@ app.engine('pug', require('pug').__express)
 
 
 //load middleware
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cookieParser())
+
+app.use(function(req,res,next){
+	res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+	res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+	
+	next();
+})
+
 // var authMiddleware=require("./middleware/auth.middleware")
 
 //import controller
@@ -47,8 +57,8 @@ app.use("/api/status_transfers",status_transferController);
 app.use("/api/orders",orderController);
 
 
-var port=3000;
-app.listen(3000,function(){
+var port=5000;
+app.listen(5000,function(){
 	console.log(`server on port ${port}`)
 })
 

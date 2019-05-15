@@ -5,26 +5,33 @@ orderModel=require("../model/order.model");
 
 
 router.get("/",async function(req,res){
-	var userId=req.query.user;
-	var customerId=req.query.customer;
+	// var userId=req.query.user;
+	// var customerId=req.query.customer;
 	
-	try{
-		if(userId&&customerId){
-			var orders=await orderModel.find({user:userId,customer:customerId}).populate("user");	
-		}else if(userId&&customerId){
-			var orders=await orderModel.find({user:userId}).populate("user");	
-		}else if(userId&&customerId){
-			var orders=await orderModel.find({customer:customerId}).populate("user");	
-		}else{
-			var orders=await orderModel.find({}).populate("user");	
-		}
-	}catch(err){
-		res.send(err.message);
-	}
+	// try{
+	// 	if(userId&&customerId){
+	// 		var orders=await orderModel.find({user:userId,customer:customerId}).populate("user");	
+	// 	}else if(userId&&customerId){
+	// 		var orders=await orderModel.find({user:userId}).populate("user");	
+	// 	}else if(userId&&customerId){
+	// 		var orders=await orderModel.find({customer:customerId}).populate("user");	
+	// 	}else{
+	// 		var orders=await orderModel.find({}).populate("user");	
+	// 	}
+	// }catch(err){
+	// 	res.send(err.message);
+	// }
 	
-	//var orders=await orderModel.find({}).populate("status").populate("status_transfer").populate("customer").populate("user");	
+	// //var orders=await orderModel.find({}).populate("status").populate("status_transfer").populate("customer").populate("user");	
 
-	res.send(orders)
+	// res.send(orders)
+
+	try{
+		var users=await orderModel.find(req.query)
+		//console.log(users);
+		res.send(users)
+	}catch(err){}
+	
 })
 
 
@@ -42,11 +49,15 @@ router.post("/",async function(req,res){
 		"note":"giao hang nhanh nhe em",
 		"total":"100000",
 		"customer":"5ccfa3c28e822a0ed97a867a",
-		"user":"5ccf9b33e10dc17c702415ca",
+		"user":"5cda1daa39dc4b4cbb831474",
 		"order_details"	:[
 			{
 				"product":"5ccfae953152e724a5934636",
 				"quantity":4
+			},
+			{
+				"product":"5ccfae953152e724a5934636",
+				"quantity":14
 			}
 		]
 		}

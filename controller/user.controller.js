@@ -7,9 +7,25 @@ userModel=require("../model/user.model");
 
 
 router.get("/",async function(req,res){
-	var users=await userModel.find()
-	//console.log(users);
-	res.send(users)
+	
+	// let filter=Object.keys(req.query)[0];
+	// let filterValue=req.query[filter];
+	
+	
+	// var objQuery={}
+	// objQuery[filter]=filterValue
+
+	// var users=await userModel.find(objQuery)
+	// //console.log(users);
+	// res.send(users)
+
+
+	try{
+		var users=await userModel.find(req.query)
+		//console.log(users);
+		res.send(users)
+
+	}catch(err){}
 	
 })
 
@@ -23,7 +39,7 @@ router.post("/",async function(req,res){
 	"isAdmin":true
 	}
 	*/
-
+	console.log(req.body)
 	var user=new userModel(req.body)
 	user=await user.save()
 	res.send(user)

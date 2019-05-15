@@ -7,9 +7,11 @@ statusModel=require("../model/status.model");
 
 
 router.get("/",async function(req,res){
-	var statuss=await statusModel.find();
-	//console.log(statuss);
-	res.send(statuss);
+	try{
+		var users=await statusModel.find(req.query)
+		//console.log(users);
+		res.send(users)
+	}catch(err){}
 	
 })
 
@@ -20,7 +22,7 @@ router.post("/",async function(req,res){
 	"text":"status1",
 	}
 	*/
-
+	console.log(req.body)
 	var status=new statusModel(req.body)
 	status=await status.save()
 	res.send(status)

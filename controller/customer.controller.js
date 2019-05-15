@@ -5,19 +5,35 @@ customerModel=require("../model/customer.model");
 
 
 router.get("/",async function(req,res){
-	var userId=req.query.user;
+	// var userId=req.query.user;
+	// try{
+	// 	if(userId){
+	// 	var users=await customerModel.find({user:userId});	
+	// 	}else{
+	// 		var users=await customerModel.find();	
+	// 	}	
+	// }catch(err){
+	// 	res.send(err.message);
+	// }
+	
+	
+	// let filters=Object.keys(req.query);
+	// var objQuery={}
+	// for(filter of filters){
+	// 	let filterValue=req.query[filter];
+	// 	objQuery[filter]=filterValue
+	// }
+	// console.log(objQuery)
+
 	try{
-		if(userId){
-		var users=await customerModel.find({user:userId});	
-		}else{
-			var users=await customerModel.find();	
-		}	
-	}catch(err){
-		res.send(err.message);
-	}
+		var users=await customerModel.find(req.query)
+		//console.log(users);
+		res.send(users)
+
+	}catch(err){}
 	
-	
-	res.send(users)
+
+	// res.send(users)
 })
 
 
@@ -33,7 +49,6 @@ router.post("/",async function(req,res){
 	"user":"5ccf9b33e10dc17c702415ca"
 	}
 	*/
-
 	var customer=new customerModel(req.body)
 	customer=await customer.save()
 	res.send(customer)

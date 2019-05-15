@@ -7,9 +7,11 @@ productModel=require("../model/product.model");
 
 
 router.get("/",async function(req,res){
-	var products=await productModel.find();
-	//console.log(products);
-	res.send(products);
+	try{
+		var users=await productModel.find(req.query)
+		//console.log(users);
+		res.send(users)
+	}catch(err){}
 	
 })
 
